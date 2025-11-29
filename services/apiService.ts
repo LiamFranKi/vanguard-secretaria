@@ -1,7 +1,10 @@
 import axios from 'axios';
 import { Priority, Status } from '../types';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+// En producción, usar URL relativa (Nginx redirige /api al backend)
+// En desarrollo, usar la URL completa
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? '' : 'http://localhost:5000');
 
 class ApiService {
   private api;
