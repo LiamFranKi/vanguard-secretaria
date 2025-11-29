@@ -3,8 +3,15 @@ import { Priority, Status } from '../types';
 
 // En producción, usar URL relativa (Nginx redirige /api al backend)
 // En desarrollo, usar la URL completa
-const API_URL = import.meta.env.VITE_API_URL || 
+export const API_URL = import.meta.env.VITE_API_URL || 
   (import.meta.env.PROD ? '' : 'http://localhost:5000');
+
+// Helper para construir URLs de archivos/avatars
+export const getFileUrl = (path: string | null | undefined): string | null => {
+  if (!path) return null;
+  if (path.startsWith('http') || path.startsWith('data:')) return path;
+  return `${API_URL}${path}`;
+};
 
 class ApiService {
   private api;
@@ -102,7 +109,7 @@ class ApiService {
           id: u.id.toString(),
           name: u.name,
           email: u.email,
-          avatar: u.avatar ? `${API_URL}${u.avatar}` : null
+          avatar: u.avatar ? (u.avatar.startsWith('http') ? u.avatar : `${API_URL}${u.avatar}`) : null
         }))
       }));
     } catch (error) {
@@ -125,7 +132,7 @@ class ApiService {
         id: u.id.toString(),
         name: u.name,
         email: u.email,
-        avatar: u.avatar ? `${API_URL}${u.avatar}` : null
+          avatar: u.avatar ? (u.avatar.startsWith('http') ? u.avatar : `${API_URL}${u.avatar}`) : null
       }))
     };
   }
@@ -144,7 +151,7 @@ class ApiService {
         id: u.id.toString(),
         name: u.name,
         email: u.email,
-        avatar: u.avatar ? `${API_URL}${u.avatar}` : null
+          avatar: u.avatar ? (u.avatar.startsWith('http') ? u.avatar : `${API_URL}${u.avatar}`) : null
       }))
     };
   }
@@ -231,7 +238,7 @@ class ApiService {
         id: u.id.toString(),
         name: u.name,
         email: u.email,
-        avatar: u.avatar ? `${API_URL}${u.avatar}` : null
+          avatar: u.avatar ? (u.avatar.startsWith('http') ? u.avatar : `${API_URL}${u.avatar}`) : null
       }))
     }));
   }
@@ -250,7 +257,7 @@ class ApiService {
         id: u.id.toString(),
         name: u.name,
         email: u.email,
-        avatar: u.avatar ? `${API_URL}${u.avatar}` : null
+          avatar: u.avatar ? (u.avatar.startsWith('http') ? u.avatar : `${API_URL}${u.avatar}`) : null
       }))
     };
   }
@@ -269,7 +276,7 @@ class ApiService {
         id: u.id.toString(),
         name: u.name,
         email: u.email,
-        avatar: u.avatar ? `${API_URL}${u.avatar}` : null
+          avatar: u.avatar ? (u.avatar.startsWith('http') ? u.avatar : `${API_URL}${u.avatar}`) : null
       }))
     };
   }
