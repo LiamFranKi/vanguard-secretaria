@@ -57,7 +57,7 @@ export const ContactDetailModal: React.FC<ContactDetailModalProps> = ({ isOpen, 
           <div className="flex items-center gap-4 pb-6 border-b border-slate-200">
             {contact.avatar ? (
               <img
-                src={contact.avatar.startsWith('http') ? contact.avatar : `http://localhost:5000${contact.avatar}`}
+                src={contact.avatar.startsWith('http') ? contact.avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${contact.avatar}`}
                 alt={contact.name}
                 className="w-24 h-24 rounded-xl object-cover border-2 border-slate-200"
                 onError={(e) => {

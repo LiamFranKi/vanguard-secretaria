@@ -78,7 +78,7 @@ export const UserSelector: React.FC<UserSelectorProps> = ({ selectedUsers, onUse
             >
               {user.avatar ? (
                 <img
-                  src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`}
+                  src={user.avatar.startsWith('http') ? user.avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${user.avatar}`}
                   alt={user.name}
                   className="w-5 h-5 rounded-full object-cover"
                   onError={(e) => {
@@ -169,7 +169,7 @@ export const UserSelector: React.FC<UserSelectorProps> = ({ selectedUsers, onUse
                       >
                         {user.avatar ? (
                           <img
-                            src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`}
+                            src={user.avatar.startsWith('http') ? user.avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${user.avatar}`}
                             alt={user.name}
                             className="w-10 h-10 rounded-full object-cover border-2 border-slate-200"
                             onError={(e) => {

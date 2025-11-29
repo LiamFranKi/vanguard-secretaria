@@ -280,7 +280,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose, onUpd
                       {config.logo_url ? (
                         <>
                           <img 
-                            src={config.logo_url.startsWith('http') ? config.logo_url : `http://localhost:5000${config.logo_url}`} 
+                            src={config.logo_url.startsWith('http') ? config.logo_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.logo_url}`} 
                             alt="Logo" 
                             className="h-20 object-contain mb-2"
                             onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -346,7 +346,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose, onUpd
                       {config.favicon_url ? (
                         <>
                           <img 
-                            src={config.favicon_url.startsWith('http') ? config.favicon_url : `http://localhost:5000${config.favicon_url}`} 
+                            src={config.favicon_url.startsWith('http') ? config.favicon_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.favicon_url}`} 
                             alt="Favicon" 
                             className="h-16 w-16 object-contain mb-2"
                             onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -417,7 +417,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose, onUpd
                         {config.icon_192_url ? (
                           <>
                             <img 
-                              src={config.icon_192_url.startsWith('http') ? config.icon_192_url : `http://localhost:5000${config.icon_192_url}`} 
+                              src={config.icon_192_url.startsWith('http') ? config.icon_192_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.icon_192_url}`} 
                               alt="Icon 192" 
                               className="h-16 w-16 object-contain mb-1"
                               onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -482,7 +482,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose, onUpd
                         {config.icon_512_url ? (
                           <>
                             <img 
-                              src={config.icon_512_url.startsWith('http') ? config.icon_512_url : `http://localhost:5000${config.icon_512_url}`} 
+                              src={config.icon_512_url.startsWith('http') ? config.icon_512_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.icon_512_url}`} 
                               alt="Icon 512" 
                               className="h-16 w-16 object-contain mb-1"
                               onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -547,7 +547,7 @@ export const ConfigModal: React.FC<ConfigModalProps> = ({ isOpen, onClose, onUpd
                         {config.apple_touch_icon_url ? (
                           <>
                             <img 
-                              src={config.apple_touch_icon_url.startsWith('http') ? config.apple_touch_icon_url : `http://localhost:5000${config.apple_touch_icon_url}`} 
+                              src={config.apple_touch_icon_url.startsWith('http') ? config.apple_touch_icon_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.apple_touch_icon_url}`} 
                               alt="Apple Touch Icon" 
                               className="h-16 w-16 object-contain mb-1"
                               onError={(e) => { e.currentTarget.style.display = 'none'; }}

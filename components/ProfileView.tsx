@@ -155,7 +155,7 @@ export const ProfileView: React.FC<ProfileViewProps> = ({ onProfileUpdate }) => 
   }
 
   const avatarUrl = profile.avatar 
-    ? (profile.avatar.startsWith('http') ? profile.avatar : `http://localhost:5000${profile.avatar}`)
+    ? (profile.avatar.startsWith('http') ? profile.avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${profile.avatar}`)
     : `https://ui-avatars.com/api/?name=${encodeURIComponent(profile.name)}&background=7c3aed&color=fff&size=200`;
 
   return (

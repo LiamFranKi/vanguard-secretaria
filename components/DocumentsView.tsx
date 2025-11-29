@@ -579,7 +579,7 @@ export const DocumentsView: React.FC = () => {
   const handleView = async (doc: DocumentFile) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const baseUrl = 'http://localhost:5000';
+      const baseUrl = import.meta.env.PROD ? '' : 'http://localhost:5000';
       
       // Usar el endpoint de visualización (sin forzar descarga)
       const url = `${baseUrl}/api/documents/${doc.id}/view`;

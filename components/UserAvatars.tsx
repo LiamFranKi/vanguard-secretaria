@@ -30,7 +30,7 @@ export const UserAvatars: React.FC<UserAvatarsProps> = ({ users, maxVisible = 3 
         >
           {user.avatar ? (
             <img
-              src={user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`}
+              src={user.avatar.startsWith('http') ? user.avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${user.avatar}`}
               alt={user.name}
               className="w-7 h-7 rounded-full border-2 border-white object-cover shadow-sm hover:scale-110 transition-transform cursor-pointer"
               onError={(e) => {

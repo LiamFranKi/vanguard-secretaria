@@ -77,7 +77,7 @@ export const useConfig = () => {
     if (data.favicon_url) {
       const faviconUrl = data.favicon_url.startsWith('http') 
         ? data.favicon_url 
-        : `http://localhost:5000${data.favicon_url}`;
+        : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${data.favicon_url}`;
       
       // Remover favicons existentes
       const existingLinks = document.querySelectorAll("link[rel~='icon']");

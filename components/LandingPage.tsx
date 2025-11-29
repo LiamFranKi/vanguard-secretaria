@@ -63,7 +63,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           <div className="flex items-center gap-3">
             {config?.logo_url ? (
               <img 
-                src={config.logo_url.startsWith('http') ? config.logo_url : `http://localhost:5000${config.logo_url}`} 
+                src={config.logo_url.startsWith('http') ? config.logo_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.logo_url}`} 
                 alt="Logo" 
                 className="h-10 w-auto object-contain"
                 onError={(e) => {

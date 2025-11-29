@@ -196,7 +196,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose, onSave, co
               <div className="flex items-center gap-4">
                 {avatar ? (
                   <img
-                    src={avatar.startsWith('http') || avatar.startsWith('data:') ? avatar : `http://localhost:5000${avatar}`}
+                    src={avatar.startsWith('http') || avatar.startsWith('data:') ? avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${avatar}`}
                     alt="Avatar"
                     className="w-20 h-20 rounded-xl object-cover border-2 border-violet-200"
                     onError={(e) => {
@@ -597,7 +597,7 @@ export const ContactsView: React.FC = () => {
                   <div className="flex items-center gap-3 mb-3">
                     {contact.avatar ? (
                       <img
-                        src={contact.avatar.startsWith('http') ? contact.avatar : `http://localhost:5000${contact.avatar}`}
+                        src={contact.avatar.startsWith('http') ? contact.avatar : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${contact.avatar}`}
                         alt={contact.name}
                         className="w-12 h-12 rounded-lg object-cover border-2 border-slate-200 flex-shrink-0"
                         onError={(e) => {

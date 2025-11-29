@@ -57,7 +57,7 @@ export const LoginPage: React.FC<LoginPageProps> = ({ onSuccess, onBack }) => {
               {config?.logo_url ? (
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg p-2">
                   <img 
-                    src={config.logo_url.startsWith('http') ? config.logo_url : `http://localhost:5000${config.logo_url}`} 
+                    src={config.logo_url.startsWith('http') ? config.logo_url : `${import.meta.env.PROD ? '' : 'http://localhost:5000'}${config.logo_url}`} 
                     alt="Logo" 
                     className="h-full w-full object-contain"
                     onError={(e) => {
