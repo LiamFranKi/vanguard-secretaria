@@ -1,0 +1,7 @@
+{
+  "name": "Secretaria Pro - Organizer",
+  "description": "Una suite completa de organización administrativa con calendario, documentos, tareas y asistencia IA.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
