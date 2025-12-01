@@ -889,16 +889,28 @@ export default function App() {
           <div className="p-8 pb-4">
             <div className="flex items-center gap-3 mb-2">
               {config?.logo_url ? (
-                <img 
-                  src={config.logo_url.startsWith('http') ? config.logo_url : `http://localhost:5000${config.logo_url}`} 
-                  alt="Logo" 
-                  className="h-8 w-auto object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
-                    if (fallback) fallback.style.display = 'flex';
-                  }}
-                />
+              <img 
+  src={(() => {
+    if (!config?.logo_url) return undefined;
+    let path = config.logo_url;
+    if (path.startsWith('http://localhost:5000')) {
+      path = path.replace('http://localhost:5000', '');
+    }
+    if (path.startsWith('http')) {
+      return path;
+    }
+    const base = import.meta.env.PROD ? '' : 'http://localhost:5000';
+    return `${base}${path}`;
+  })()}
+  alt="Logo" 
+  className="h-8 w-auto object-contain"
+  onError={(e) => {
+    e.currentTarget.style.display = 'none';
+    const fallback = e.currentTarget.nextElementSibling as HTMLElement;
+    if (fallback) fallback.style.display = 'flex';
+  }}
+/>
+
               ) : null}
               <div 
                 className={`w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-indigo-600 text-white flex items-center justify-center font-bold text-lg ${config?.logo_url ? 'hidden' : ''}`}
@@ -1027,9 +1039,20 @@ export default function App() {
                 className="w-10 h-10 rounded-full bg-slate-200 overflow-hidden border-2 border-white shadow-sm hover:ring-2 hover:ring-violet-500 transition"
               >
                 <img 
-                  src={user?.avatar 
-                    ? (user.avatar.startsWith('http') ? user.avatar : `http://localhost:5000${user.avatar}`)
-                    : `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=7c3aed&color=fff`} 
+                  src={(() => {
+  if (!user?.avatar) {
+    return `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}&background=7c3aed&color=fff`;
+  }
+  let path = user.avatar;
+  if (path.startsWith('http://localhost:5000')) {
+    path = path.replace('http://localhost:5000', '');
+  }
+  if (path.startsWith('http')) {
+    return path;
+  }
+  const base = import.meta.env.PROD ? '' : 'http://localhost:5000';
+  return `${base}${path}`;
+})()}
                   alt="Profile" 
                   className="w-full h-full object-cover"
                   onError={(e) => {
